@@ -1,9 +1,8 @@
 # count_token
-Use a huggingface tokenizer to count the number of tokens in a file.
+## Description
+It uses a huggingface tokenizer to count the number of tokens in a file. Using this script to tokenize MIMIC-III NOTEEVETNS.csv table takes around 20 minutes.
 
-Using this script to tokenize MIMIC-III NOTEEVETNS.csv table takes around 20 minutes.
-
-## steps
+## Steps
 1. Install packages with
 `pip install datasets, transformers, pandas`
 
