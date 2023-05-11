@@ -8,8 +8,8 @@ import pandas as pd
 
 def parse_argument():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--file_path', default='data.csv', help='read and count token for this file')
-    parser.add_argument('--folder_path', default='data/', help='read and count token for all files in this folder')
+    parser.add_argument('--file_path', default='', help='read and count token for this file')
+    parser.add_argument('--folder_path', default='', help='read and count token for all files in this folder')
     parser.add_argument('--file_path_ends_with', default='', help='filter the file names by this suffix')
     parser.add_argument('--chunk_size', default='4096', help='filter the file names by this suffix')
     parser.add_argument('--cpu_count', default='1', help='the number of cpus to run multiprocessing. This speeds up tokenizer.')
@@ -26,7 +26,7 @@ def gather_file_path_list(file_path, folder_path, file_path_ends_with):
     file_path_list.append(file_path)
 
     ## handle folder path arg
-    for file_path in glob.glob(os.path.join(folder_path, '*')):
+    for file_path in glob.glob(os.path.join(folder_path, '*.*')):
         file_path_list.append(file_path)
 
     ## ensure no file overlap between file path and folder path
@@ -60,7 +60,7 @@ def read_in_chunks(f, chunk_size=1024):
         yield data
 
 def tokenize_one_file(file_path, tokenizer, chunk_size, cpu_count):
-    chunk_index, word_count, token_count  = 0, 0, 0
+    chunk_index, word_count, token_count = 0, 0, 0
     with open(file_path, 'r') as f:
         for text_chunk in read_in_chunks(f=f, chunk_size=chunk_size):
             word_count += len(text_chunk.split(' '))
