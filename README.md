@@ -19,4 +19,4 @@ It uses a huggingface tokenizer to count the number of tokens in a file. Using t
 
 `python count_token.py --folder_path '/home/2533245542/temp/' --file_path_ends_with '.csv' --chunk_size 3e8 --cpu_count 10`
 
-3. After the script runs to the end, it will save 2 files called `token_count.csv` and `token_count_sum.csv`. In the first file, each line is file name and token count. The meaning of the second file is when you are processing a folder. It will do a sum of the first file to get the total token count. 
+3. After the script runs to the end, it will save 2 files called `token_count.csv` and `token_count_sum.csv`. In the first file, each line is file name and token count. The meaning of the second file is when you are processing a folder, it will do a sum of the first file to get the total token count. 
